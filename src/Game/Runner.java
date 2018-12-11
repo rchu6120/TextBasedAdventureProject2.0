@@ -1,10 +1,9 @@
 package Game;
 
-import People.Person;
+import People.Student;
 import Rooms.Room;
 import Rooms.WinningRoom;
-import Board.School;
-
+import Board.Board;
 import java.util.Scanner;
 
 public class Runner {
@@ -43,10 +42,17 @@ public class Runner {
                         "┼█████████████▒▒▒▒▒▒▒▒████████████\n" +
                         "┼████████████▓▓▓▓▓▓▓▓▓▓████████████\n" +
                         "████████████▓▓▓▓▓▓▓▓▓▓▓████████████\n" +
-                        "███████████▓▓▓▓▓▓▓▓▓▓▓▓▓███████████\n"
-                Room[][] building = new Room[5][5];
+                        "███████████▓▓▓▓▓▓▓▓▓▓▓▓▓███████████\n");
+        System.out.println("Why hello freshman! I can see that it is your first day of high school and you are lost in such a big school like this! First off what might be your name?");
+        Scanner input = new Scanner(System.in);
+        String name = input.nextLine();
+        System.out.println("Hello " + name + ", if I remember correctly, you were already given a program card with all your rooms listed on it. Try not to enter the wrong classrooms");
+        System.out.println("or else there will be consequences! If you don't remember what your program card looks like, here is a picture of what it looks like");
+        System.out.println();
+        System.out.println("Each room is listed as follows:" + "\n" + "Eng FRESHMAN COMPOSITION Rm 35" + "\n" + "Math GEOMETRY Rm 29" + "Soc Studies GLOBAL HISTORY Rm 87" + "\n" + "");
+        Room[][] building = new Room[5][5];
 
-        //Fill the building with normal rooms
+        //Fill the school with normal rooms
         for (int x = 0; x < building.length; x++)
         {
             for (int y = 0; y < building[x].length; y++)

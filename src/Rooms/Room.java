@@ -1,10 +1,10 @@
 package Rooms;
 
 import Game.Runner;
-import People.Person;
+import People.Student;
 
 public class Room {
-    Person occupant;
+    Student occupant;
     int xLoc,yLoc;
 
     public Room(int x, int y)
@@ -17,7 +17,7 @@ public class Room {
      * Method controls the results when a person enters this room.
      * @param x the Person entering
      */
-    public void enterRoom(Person x)
+    public void enterRoom(Student x)
     {
         System.out.println("You enter a plain old room");
         occupant = x;
@@ -29,7 +29,7 @@ public class Room {
      * Removes the player from the room.
      * @param x
      */
-    public void leaveRoom(Person x)
+    public void leaveRoom(Student x)
     {
         occupant = null;
     }

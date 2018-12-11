@@ -3,7 +3,7 @@ package People;
 /**
  * Person represents the player as they move through the game.
  */
-public class Person {
+public class Student {
     String firstName;
     String familyName;
     int xLoc, yLoc;
@@ -25,13 +25,11 @@ public class Person {
         this.yLoc = yLoc;
     }
 
-    public Person (String firstName, String familyName, int xLoc, int yLoc)
+    public Student(String firstName, String familyName, int xLoc, int yLoc)
     {
         this.firstName = firstName;
         this.familyName = familyName;
         this.xLoc = xLoc;
         this.yLoc = yLoc;
     }
-
-
 }
