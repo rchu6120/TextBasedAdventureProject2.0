@@ -1,9 +1,9 @@
 package Game;
 
-import People.Student;
+import People.Person;
 import Rooms.Room;
 import Rooms.WinningRoom;
-import Board.Board;
+
 import java.util.Scanner;
 
 public class Runner {
