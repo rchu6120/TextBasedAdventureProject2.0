@@ -1,6 +1,6 @@
 package Rooms;
 
-import People.Person;
+import People.Student;
 
 public class Closet {
 }

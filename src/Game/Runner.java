@@ -1,6 +1,6 @@
 package Game;
 
-import People.Person;
+import People.Student;
 import Rooms.Room;
 import Rooms.WinningRoom;
 
@@ -43,13 +43,36 @@ public class Runner {
                         "┼████████████▓▓▓▓▓▓▓▓▓▓████████████\n" +
                         "████████████▓▓▓▓▓▓▓▓▓▓▓████████████\n" +
                         "███████████▓▓▓▓▓▓▓▓▓▓▓▓▓███████████\n");
-        System.out.println("Why hello freshman! I can see that it is your first day of high school and you are lost in such a big school like this! First off what might be your name?");
+        System.out.println("Why hello freshman! I can see that it is your first day of high school and you are lost in such a big school like this! First off, what might be your name?");
         Scanner input = new Scanner(System.in);
         String name = input.nextLine();
         System.out.println("Hello " + name + ", if I remember correctly, you were already given a program card with all your rooms listed on it. Try not to enter the wrong classrooms");
-        System.out.println("or else there will be consequences! If you don't remember what your program card looks like, here is a picture of what it looks like");
-        System.out.println();
-        System.out.println("Each room is listed as follows:" + "\n" + "Eng FRESHMAN COMPOSITION Rm 35" + "\n" + "Math GEOMETRY Rm 29" + "Soc Studies GLOBAL HISTORY Rm 87" + "\n" + "");
+        System.out.println("or else there will be consequences! If you don't remember what your program card looks like, here is a picture of what it looks like:");
+        System.out.println(" `        ```                 ```````````````                ```       `  \n" +
+                           "         `/:o-:                ` `..`.````````              `:/o:/         \n" +
+                           "         `++o++                   ````````                  `++o++         \n" +
+                           "          `...                      `                        `.-.          \n" +
+                           "             ``           --.---..``.```.``.``      ````           ``      \n" +
+                           "          `````           ```  ` ` `` ` ```` `      ````          ```      \n" +
+                           "          `````           `    `      `         `` `````                   \n" +
+                           " `......:..``..```.`...``..-:--..--:--.---:--..-/-.`::`.``````....```````` \n" +
+                           " `````.`````````````````````.`````.````.`.``.`.``````````````````````````` \n" +
+                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
+                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
+                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
+                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
+                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
+                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
+                           "      `   `       ` `` ```  `   `  `   `  `   `   `    `                   \n" +
+                           "                                                                           \n" +
+                           "  `` ``                          `   `                  ```` ```           \n" +
+                           " `-----.`..`````````..``.````````---.-.```````...``..``.----..--`````````` \n" +
+                           " `                      `                      `  `.``````````````` ````   \n" +
+                           " `                      `                          ``````````              \n" +
+                           " `                      `                                                  \n" +
+                           " `                      `                                                  \n" +
+                           "  `````  ``````   ``````   ``````    ``````    ``````    ``````   ``````  `  ");
+        System.out.println("Each room is listed as follows:" + "\n" + "Eng FRESHMAN COMPOSITION Rm 35" + "\n" + "Math GEOMETRY Rm 29" + "Soc Studies GLOBAL HISTORY Rm 87" + "\n" + "Sci BIOLOGY Rm 85" + "\n" + "Gym PHYS ED Rm 98");
         Room[][] building = new Room[5][5];
 
         //Fill the school with normal rooms
@@ -67,12 +90,12 @@ public class Runner {
         building[x][y] = new WinningRoom(x, y);
 
         //Setup player 1 and the input scanner
-        Person player1 = new Person("FirstName", "FamilyName", 0,0);
+        Student player1 = new Student("FirstName", "FamilyName", 0,0);
         building[0][0].enterRoom(player1);
         Scanner in = new Scanner(System.in);
         while(gameOn)
         {
-            System.out.println("Welcome to your first day of school! Try to find all your classrooms and avoid walking into the wrong room."  );
+            System.out.println("Welcome to your first day of school! Try to find all your classrooms and avoid walking into the wrong room.");
             String move = in.nextLine();
             if(validMove(move, player1, building))
             {
@@ -95,7 +118,7 @@ public class Runner {
      * @param map the 2D array of rooms
      * @return
      */
-    public static boolean validMove(String move, Person p, Room[][] map)
+    public static boolean validMove(String move, Student p, Room[][] map)
     {
         move = move.toLowerCase().trim();
         switch (move) {
@@ -155,7 +178,4 @@ public class Runner {
     {
         gameOn = false;
     }
-
-
-
 }

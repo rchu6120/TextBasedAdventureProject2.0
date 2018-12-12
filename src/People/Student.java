@@ -25,12 +25,9 @@ public class Student {
         this.yLoc = yLoc;
     }
 
-    public Student(String firstName, String familyName, int xLoc, int yLoc)
+    public Student(int xLoc, int yLoc)
     {
-        this.firstName = firstName;
-        this.familyName = familyName;
         this.xLoc = xLoc;
         this.yLoc = yLoc;
     }
 }
-gdfgdfgdf

@@ -1,7 +1,7 @@
 package Rooms;
 
 import Game.Runner;
-import People.Person;
+import People.Student;
 
 public class WinningRoom extends Room
 {
@@ -16,7 +16,7 @@ public class WinningRoom extends Room
      * @param x the Person entering
      */
     @Override
-    public void enterRoom(Person x) {
+    public void enterRoom(Student x) {
 
         occupant = x;
         x.setxLoc(this.xLoc);
