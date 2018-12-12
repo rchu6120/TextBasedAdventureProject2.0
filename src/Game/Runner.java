@@ -90,12 +90,11 @@ public class Runner {
         building[x][y] = new WinningRoom(x, y);
 
         //Setup player 1 and the input scanner
-        Student player1 = new Student("FirstName", "FamilyName", 0,0);
+        Student player1 = new Student(0,0);
         building[0][0].enterRoom(player1);
         Scanner in = new Scanner(System.in);
         while(gameOn)
         {
-            System.out.println("Welcome to your first day of school! Try to find all your classrooms and avoid walking into the wrong room.");
             String move = in.nextLine();
             if(validMove(move, player1, building))
             {
