@@ -1,9 +1,7 @@
 package Game;
 
+import Rooms.Classroom;
 import People.Student;
-import Rooms.Room;
-import Rooms.WinningRoom;
-
 import java.util.Scanner;
 
 public class Runner {
@@ -73,21 +71,16 @@ public class Runner {
                            " `                      `                                                  \n" +
                            "  `````  ``````   ``````   ``````    ``````    ``````    ``````   ``````  `  ");
         System.out.println("Each room is listed as follows:" + "\n" + "Eng FRESHMAN COMPOSITION Rm 35" + "\n" + "Math GEOMETRY Rm 29" + "Soc Studies GLOBAL HISTORY Rm 87" + "\n" + "Sci BIOLOGY Rm 85" + "\n" + "Gym PHYS ED Rm 98");
-        Room[][] building = new Room[5][5];
+        Room[][] School = new Room[5][5];
 
         //Fill the school with normal rooms
-        for (int x = 0; x < building.length; x++)
+        for (int x = 0; x < rooms.length; x++)
         {
             for (int y = 0; y < building[x].length; y++)
             {
                 building[x][y] = new Room(x,y);
             }
         }
-
-        //Create a random winning room.
-        int x = (int)(Math.random()*building.length);
-        int y = (int)(Math.random()*building.length);
-        building[x][y] = new WinningRoom(x, y);
 
         //Setup player 1 and the input scanner
         Student player1 = new Student(0,0);

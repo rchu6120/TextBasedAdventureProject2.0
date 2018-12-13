@@ -1,6 +1,7 @@
 package Rooms;
 
 import People.Student;
+import Game.Runner;
 
 public class Classroom {
     Student occupant;

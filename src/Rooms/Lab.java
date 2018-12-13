@@ -2,5 +2,5 @@ package Rooms;
 
 import People.Student;
 
-public class Lab {
+public class Lab extends ScienceRoom {
 }
