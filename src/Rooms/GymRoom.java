@@ -10,8 +10,8 @@ public class GymRoom extends Classroom {
     }
 
     public void enterRoom(Student s) {
-        System.out.println("Welcome to Mr.Brutus's gym class!");
-        System.out.println("Who wrote the play \"Romeo and Juliet\"?");
+        System.out.println("Welcome to Mr.Brutus's gym class! In here, we only LIFT.");
+        System.out.println("Is it an eccentric movement or concentric movement if your muscle lengthens?");
         Scanner input = new Scanner(System.in);
         String statement = input.nextLine();
         System.out.println(getResponse(statement));
@@ -20,12 +20,13 @@ public class GymRoom extends Classroom {
     public String getResponse(String statement) {
         String response = "";
 
-        if (findKeyword(statement, "Shakespeare", 0) >= 0) {
-            response = "Nice job! Maybe you are ready for this class then...ok you may leave now.";
+        if (findKeyword(statement, "Eccentric", 0) >= 0) {
+            response = "I guess you're ready for some heavy lifting then! On a side note, now that you have went to all your classes, congratulations on making it to the end of your first day of high school! There are only so many more days left!";
         } else {
-            response = "Are you kidding me? You don't know Shakespeare? Get out of this class right now!";
+            response = "Man I'm going to have to train you for the rest of the year for not knowing this. On a side note, now that you have went to all your classes, congratulations on making it to the end of your first day of high school! There are only so many more days left!";
         }
         return response;
+        Runner.gameOff();
     }
 
     public int findKeyword(String statement, String goal, int startPos) {

@@ -70,7 +70,7 @@ public class Runner {
                            " `                      `                                                  \n" +
                            " `                      `                                                  \n" +
                            "  `````  ``````   ``````   ``````    ``````    ``````    ``````   ``````  `  ");
-        System.out.println("Each room is listed as follows:" + "\n" + "Eng FRESHMAN COMPOSITION Rm 35" + "\n" + "Math GEOMETRY Rm 29" + "Soc Studies GLOBAL HISTORY Rm 87" + "\n" + "Sci BIOLOGY Rm 85" + "\n" + "Gym PHYS ED Rm 98");
+        System.out.println("Each room is listed as follows:" + "\n" + "Eng FRESHMAN COMPOSITION Floor 1 Rm 14  " + "\n" + "Math GEOMETRY Floor 2 Rm 34" + "Sci BIOLOGY Floor 2 Rm 41" + "Soc Studies GLOBAL HISTORY Floor 3 Rm 13" + "\n" + "\n" + "Gym PHYS ED Floor 4 Rm 44");
         Room[][] School = new Room[5][5];
 
         //Fill the school with normal rooms
@@ -83,7 +83,7 @@ public class Runner {
         }
 
         //Setup player 1 and the input scanner
-        Student player1 = new Student(0,0);
+        Student player1 = new Student(4,0);
         building[0][0].enterRoom(player1);
         Scanner in = new Scanner(System.in);
         while(gameOn)

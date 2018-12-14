@@ -10,8 +10,8 @@ public class ScienceRoom extends Classroom {
     }
 
     public void enterRoom(Student s) {
-        System.out.println("Welcome to Mr.Harris's English AP Literature Class! Clearly, you are not in the right room but before you leave, let me ask you a question.");
-        System.out.println("Who wrote the play \"Romeo and Juliet\"?");
+        System.out.println("Welcome to Mr.Watson's Biology Science Class! You will be exploring all sorts of living environments and understanding the reasoning behind it. Let me ask you a question first!");
+        System.out.println("What type of cells help carry oxygen from the lungs to the rest of the body?");
         Scanner input = new Scanner(System.in);
         String statement = input.nextLine();
         System.out.println(getResponse(statement));
@@ -20,8 +20,8 @@ public class ScienceRoom extends Classroom {
     public String getResponse(String statement) {
         String response = "";
 
-        if (findKeyword(statement, "Shakespeare", 0) >= 0) {
-            response = "Nice job! Maybe you are ready for this class then...ok you may leave now.";
+        if (findKeyword(statement, "Blood", 0) >= 0) {
+            response = "Awesome! This is a great start to our unit as we will understand how the human body works!";
         } else {
             response = "Are you kidding me? You don't know Shakespeare? Get out of this class right now!";
         }

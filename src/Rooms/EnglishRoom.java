@@ -10,7 +10,7 @@ public class EnglishRoom extends Classroom {
     }
 
     public void enterRoom(Student s) {
-        System.out.println("Welcome to Mr.Harris's English AP Literature Class! Clearly, you are not in the right room but before you leave, let me ask you a question.");
+        System.out.println("Welcome to Mr.Harris's English Freshman Composition English Class! You must be so excited to be here so let me ask you a question!");
         System.out.println("Who wrote the play \"Romeo and Juliet\"?");
         Scanner input = new Scanner(System.in);
         String statement = input.nextLine();
@@ -21,9 +21,9 @@ public class EnglishRoom extends Classroom {
         String response = "";
 
         if (findKeyword(statement, "Shakespeare", 0) >= 0) {
-            response = "Nice job! Maybe you are ready for this class then...ok you may leave now.";
+            response = "Nice job! That's all for now then. Go on to your next class.";
         } else {
-            response = "Are you kidding me? You don't know Shakespeare? Get out of this class right now!";
+            response = "Man we're gonna have a long year together. Go on to your next class.";
         }
         return response;
     }

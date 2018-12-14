@@ -10,8 +10,8 @@ public class MathRoom extends Classroom {
     }
 
     public void enterRoom(Student s) {
-        System.out.println("Welcome to Mr.Harris's English AP Literature Class! Clearly, you are not in the right room but before you leave, let me ask you a question.");
-        System.out.println("Who wrote the play \"Romeo and Juliet\"?");
+        System.out.println("Welcome to Ms.Nielson's Geometry Math Class! In here, we learn about all kinds of shapes and proofs to these formulas! Let me ask you a question.");
+        System.out.println("How many degrees are in a triangle??");
         Scanner input = new Scanner(System.in);
         String statement = input.nextLine();
         System.out.println(getResponse(statement));
@@ -20,10 +20,10 @@ public class MathRoom extends Classroom {
     public String getResponse(String statement) {
         String response = "";
 
-        if (findKeyword(statement, "Shakespeare", 0) >= 0) {
-            response = "Nice job! Maybe you are ready for this class then...ok you may leave now.";
+        if (findKeyword(statement, "180", 0) >= 0) {
+            response = "Great job! You're ready to explore all the different kinds of proofs in this class! Move on to your next class.";
         } else {
-            response = "Are you kidding me? You don't know Shakespeare? Get out of this class right now!";
+            response = "Hm...maybe we're going to have to refine your knowledge on shapes. You may leave.";
         }
         return response;
     }
