@@ -1,6 +1,12 @@
 package Board;
 
 import Rooms.Classroom;
+import Rooms.GymRoom;
+import Rooms.EnglishRoom;
+import Rooms.MathRoom;
+import Rooms.Lab;
+import Rooms.SocialStudiesRoom;
+import Rooms.ScienceRoom;
 
 public class Board {
     private Room[][] rooms;
@@ -18,9 +24,9 @@ public class Board {
     }
 
     public void fillRooms() {
-        for (int x = 0; x < rooms.length; x++) {
-            for (int y = 0; y < rooms[x].length; y++) {
-                rooms[x][y] = new Room(x, y);
+        for (int x = 0; x < this.rooms.length; x++) {
+            for (int y = 0; y < this.rooms[x].length; y++) {
+                this.rooms[x][y] = new Room(x, y);
             }
         }
 

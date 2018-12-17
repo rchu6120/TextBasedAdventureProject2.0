@@ -26,7 +26,6 @@ public class GymRoom extends Classroom {
             response = "Man I'm going to have to train you for the rest of the year for not knowing this. On a side note, now that you have went to all your classes, congratulations on making it to the end of your first day of high school! There are only so many more days left!";
         }
         return response;
-        Runner.gameOff();
     }
 
     public int findKeyword(String statement, String goal, int startPos) {
@@ -50,6 +49,7 @@ public class GymRoom extends Classroom {
         }
         return -1;
     }
+    Runner.gameOff();
 }
 
 
