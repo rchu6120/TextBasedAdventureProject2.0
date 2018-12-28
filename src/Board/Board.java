@@ -1,68 +1,69 @@
+/**
+ * This version:
+ * @author Ricky Chu
+ * @version December 2018
+ */
 package Board;
 
-import Rooms.Classroom;
-import Rooms.GymRoom;
-import Rooms.EnglishRoom;
-import Rooms.MathRoom;
-import Rooms.Lab;
-import Rooms.SocialStudiesRoom;
-import Rooms.ScienceRoom;
+import Rooms.CreatureRoom;
+import Rooms.Room;
+import Rooms.WinningRoom;
 
 public class Board {
-    private Room[][] rooms;
-    private int floorLevel;
+    private Room[][] map;
+    private int area;
+    public int mrcount = 0;
 
-    public Board(Room[][] room, int floorLevel) {
-        this.rooms = room;
-        this.floorLevel = floorLevel;
+    public Board(Room[][] map) {
+        this.map = map;
     }
 
-    public Board(int floorLevel, int length, int width) {
-        this.floorLevel = floorLevel;
-        this.rooms = new Room[length][width];
-        fillRooms();
-    }
 
-    public void fillRooms() {
-        for (int x = 0; x < this.rooms.length; x++) {
-            for (int y = 0; y < this.rooms[x].length; y++) {
-                this.rooms[x][y] = new Room(x, y);
+    public void build(){
+
+        for (int x = 0; x < map.length; x++)
+        {
+            for (int y = 0; y < map[x].length; y++)
+            {
+                map[x][y] = new Room(x,y);
+                area++;
             }
         }
 
-
-
-        //Create the school classrooms.
-        int EngX = (int) (Math.random() * rooms.length);
-        int EngY = (int) (Math.random() * rooms.length);
-        this.rooms[EngX][EngY] = new EnglishRoom(EngX, EngY);
-
-        int MathX = (int) (Math.random() * rooms.length);
-        int MathY = (int) (Math.random() * rooms.length);
-        this.rooms[MathX][MathY] = new MathRoom(MathX, MathY);
-
-        int SocX = (int) (Math.random() * rooms.length);
-        int SocY = (int) (Math.random() * rooms.length);
-        this.rooms[SocX][SocY] = new SocialStudiesRoom(SocX, SocY);
-
-        int SciX = (int) (Math.random() * rooms.length);
-        int SciY = (int) (Math.random() * rooms.length);
-        this.rooms[SciX][SciY] = new ScienceRoom(SciX, SciY);
-
-        int GymX = (int) (Math.random() * rooms.length);
-        int GymY = (int) (Math.random() * rooms.length);
-        this.rooms[MathX][MathY] = new GymRoom(GymX, GymY);
-    }
-
-    public String toString() {
-        String school = "";
-        for (int i = 0; i < rooms.length; i++) {
-            String room = "";
-            for (int j = 0; j < rooms[i].length; j++) {
-                room += this.rooms[i][j].toString();
-            }
-            school += room + "\n";
+        //Create a random Winning room + makes sure it is not the spawn location
+        int x = (int) (Math.random() * map.length);
+        int y = (int) (Math.random() * map.length);
+        while (x == 0 && y == 0) {
+            x = (int) (Math.random() * map.length);
+            y = (int) (Math.random() * map.length);
         }
-        return school;
+        map[x][y] = new WinningRoom(x, y);
+        for(int i = 0; i < area; i+=10) {
+            //Create a random Creature room.
+
+            int x2 = (int) (Math.random() * map.length);
+            int y2 = (int) (Math.random() * map.length);
+            while ((x2 == 0 && y2 == 0) || (x2 == x && y2 == y)) {
+                x2 = (int) (Math.random() * map.length);
+                y2 = (int) (Math.random() * map.length);
+            }
+            map[x2][y2] = new CreatureRoom(x2, y2);
+            mrcount++;
+        }
     }
+    public void print() {
+        String str = "";
+        for(int x = 0; x < map.length; x++){
+            for(int y = 0; y < map[x].length; y++){
+                str += map[x][y];
+            }
+            str += "\n";
+        }
+        System.out.println(str);
+    }
+
+    public int getMrcount(){
+        return mrcount;
+    }
+
 }

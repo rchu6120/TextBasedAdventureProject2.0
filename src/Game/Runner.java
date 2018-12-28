@@ -1,98 +1,89 @@
+/**
+ * This version:
+ * @author Ricky Chu
+ * @version December 2018
+ */
 package Game;
 
-import Rooms.Classroom;
-import People.Student;
+import Board.Board;
+import People.Person;
+import Rooms.CreatureRoom;
+import Rooms.Room;
+import Rooms.WinningRoom;
+
 import java.util.Scanner;
 
 public class Runner {
 
-
-    private static boolean gameOn = true;
-
+    public static boolean gameOn = true;
+    public static int mrcount;
     public static void main(String[] args)
     {
-        System.out.print("┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼███\n" +
-                        "┼┼┼┼┼┼┼┼┼┼┼┼┼███████\n" +
-                        "┼┼┼┼┼┼┼┼┼┼██████████████\n" +
-                        "┼┼┼┼┼┼┼████████████████████\n" +
-                        "┼┼┼┼██████████████████████████\n" +
-                        "┼┼████████████████████████████████\n" +
-                        "┼██████████████████████████████████\n" +
-                        "┼████████████████████████████████\n" +
-                        "┼█░░░░██░░░░██████████░░░░██░░░░█\n" +
-                        "┼█░░░░██░░░░██████████░░░░██░░░░█\n" +
-                        "┼█░░░░██░░░░██████████░░░░██░░░░█\n" +
-                        "┼████████████████████████████████\n" +
-                        "┼█░░░░██░░░░██████████░░░░██░░░░█\n" +
-                        "┼█░░░░██░░░░██████████░░░░██░░░░█\n" +
-                        "┼█░░░░██░░░░██████████░░░░██░░░░█\n" +
-                        "┼████████████████████████████████\n" +
-                        "┼████████████████████████████████\n" +
-                        "┼████████████████████████████████\n" +
-                        "┼█░░░░██░░░░██████████ ░░░░██░░░░█\n" +
-                        "┼█░░░░██░░░░█▒▒▒▒▒▒▒▒█░░░░██░░░░█\n" +
-                        "┼█░░░░██░░░░█▒▒▒▒▒▒▒▒█░░░░██░░░░█\n" +
-                        "┼████████████ ▒▒▒░░▒▒▒████████████\n" +
-                        "┼█░░░░██░░░░█▒▒▒▒▒▒▒▒█░░░░██░░░░█\n" +
-                        "┼█░░░░██░░░░█▒▒▒▒▒▒▒▒█░░░░██░░░░█\n" +
-                        "┼█░░░░██░░░░█▒▒▒▒▒▒▒▒█░░░░██░░░░█\n" +
-                        "┼████████████ ▒▒▒▒▒▒▒▒████████████\n" +
-                        "┼████████████ ▒▒▒▒▒▒▒▒████████████\n" +
-                        "┼████████████▓▓▓▓▓▓▓▓▓▓████████████\n" +
-                        "┼███████████ ▓▓▓▓▓▓▓▓▓▓▓████████████\n" +
-                        "┼██████████ ▓▓▓▓▓▓▓▓▓▓▓▓▓███████████\n");
-        System.out.println("Why hello freshman! I can see that it is your first day of high school and you are lost in such a big school like this! First off, what might be your name?");
-        Scanner input = new Scanner(System.in);
-        String name = input.nextLine();
-        System.out.println("Hello " + name + ", if I remember correctly, you were already given a program card with all your rooms listed on it. Try not to enter the wrong classrooms");
-        System.out.println("or else there will be consequences! If you don't remember what your program card looks like, here is a picture of what it looks like:");
-        System.out.println(" `        ```                 ```````````````                ```       `  \n" +
-                           "         `/:o-:                ` `..`.````````              `:/o:/         \n" +
-                           "         `++o++                   ````````                  `++o++         \n" +
-                           "          `...                      `                        `.-.          \n" +
-                           "             ``           --.---..``.```.``.``      ````           ``      \n" +
-                           "          `````           ```  ` ` `` ` ```` `      ````          ```      \n" +
-                           "          `````           `    `      `         `` `````                   \n" +
-                           " `......:..``..```.`...``..-:--..--:--.---:--..-/-.`::`.``````....```````` \n" +
-                           " `````.`````````````````````.`````.````.`.``.`.``````````````````````````` \n" +
-                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
-                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
-                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
-                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
-                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
-                           " `    `   `       `      `  `   `  `   `  `   `   `    `                 ` \n" +
-                           "      `   `       ` `` ```  `   `  `   `  `   `   `    `                   \n" +
-                           "                                                                           \n" +
-                           "  `` ``                          `   `                  ```` ```           \n" +
-                           " `-----.`..`````````..``.````````---.-.```````...``..``.----..--`````````` \n" +
-                           " `                      `                      `  `.``````````````` ````   \n" +
-                           " `                      `                          ``````````              \n" +
-                           " `                      `                                                  \n" +
-                           " `                      `                                                  \n" +
-                           "  `````  ``````   ``````   ``````    ``````    ``````    ``````   ``````  `  ");
-        System.out.println("Each room is listed as follows:" + "\n" + "Eng FRESHMAN COMPOSITION Floor 1 Rm 14  " + "\n" + "Math GEOMETRY Floor 2 Rm 34" + "Sci BIOLOGY Floor 2 Rm 41" + "Soc Studies GLOBAL HISTORY Floor 3 Rm 13" + "\n" + "\n" + "Gym PHYS ED Floor 4 Rm 44");
-        Room[][] School = new Room[5][5];
 
-        //Fill the school with normal rooms
-        for (int x = 0; x < rooms.length; x++)
-        {
-            for (int y = 0; y < building[x].length; y++)
-            {
-                building[x][y] = new Room(x,y);
-            }
-        }
-
+        Room[][] map = new Room[5][5];
+        Board board = new Board(map);
         //Setup player 1 and the input scanner
-        Student player1 = new Student(4,0);
-        building[0][0].enterRoom(player1);
         Scanner in = new Scanner(System.in);
+        System.out.println("Welcome to Space Creatures!" + "\n" + "What might be your name?");
+        String name = in.nextLine();
+        Person player1 = new Person(name, 0, 0,100,0,1);
+        System.out.println("Why hello, " + player1.getName()+". There are many space creatures lying around the board." + "\n" + "You must defeat all of them before entering the UFO to go back home!");
+        System.out.println("How big would you like your game to be? (Min: 2 x 2)");
+        System.out.println("Height:");
+        String height = in.nextLine();
+        System.out.println("Width:");
+        String width = in.nextLine();
+        try{
+            int heightint = Integer.parseInt(height);
+            int widthint = Integer.parseInt(width);
+            map = new Room[heightint][widthint];
+            board = new Board(map);
+
+
+            board.build();
+        }catch (NumberFormatException ex) {
+            System.out.println("I don't think those are numbers... How about a 5 x 5?");
+            board.build();
+        }
+        System.out.println("The rooms on the board marked with a \"C\" have a space creature inside the room!In each of the rooms marked with an 'C' you will find a creature!" + "\n" + "Use \"Kick\", \"Throw a bat\", \"Fireball\", or \"Hydro pump\" to beat each space creature!" + "\n" + "You must beat all the space creatures before going into the room marked with a \"W\" to win the game!");
+        map[0][0].enterRoom(player1);
+
+        mrcount = board.mrcount;
+
         while(gameOn)
         {
+            board.print();
+            System.out.println(player1);
+            for (int i = 0; i < player1.getInventory().length; i++) {
+                if(player1.getInventory()[i] != null && player1.getInventory()[i].equals("Meat")){
+                    System.out.println("Where would you like to move? (Choose N, S, E, W) or eat your meat with C");
+                    break;
+                }
+                else if(i == player1.getInventory().length-1){
+                    System.out.println("Where would you like to move? (Choose N, S, E, W)");
+                }
+            }
+
+
+
             String move = in.nextLine();
-            if(validMove(move, player1, building))
+            if(validMove(move, player1, map))
             {
                 System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 
+            }
+            if(move.equals("C") || move.equals("c")){
+                for (int i = 0; i < player1.getInventory().length; i++) {
+                    if(player1.getInventory()[i] != null && player1.getInventory()[i].equals("Meat")){
+                        player1.health += 20;
+                        player1.getInventory()[i] = null;
+                        System.out.println("You ate your meat.");
+                        break;
+                    }
+                    else if(i == player1.getInventory().length-1){
+                        System.out.println("Please choose a valid move.");
+                    }
+                }
             }
             else {
                 System.out.println("Please choose a valid move.");
@@ -110,11 +101,11 @@ public class Runner {
      * @param map the 2D array of rooms
      * @return
      */
-    public static boolean validMove(String move, Student p, Room[][] map)
+    public static boolean validMove(String move, Person p, Room[][] map)
     {
         move = move.toLowerCase().trim();
         switch (move) {
-            case "w":
+            case "n":
                 if (p.getxLoc() > 0)
                 {
                     map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -125,7 +116,7 @@ public class Runner {
                 {
                     return false;
                 }
-            case "d":
+            case "e":
                 if (p.getyLoc()< map[p.getyLoc()].length -1)
                 {
                     map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -149,7 +140,7 @@ public class Runner {
                     return false;
                 }
 
-            case "a":
+            case "w":
                 if (p.getyLoc() > 0)
                 {
                     map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -170,4 +161,7 @@ public class Runner {
     {
         gameOn = false;
     }
+
+
+
 }
