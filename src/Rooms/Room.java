@@ -11,16 +11,27 @@ public class Room {
     Person occupant;
     int xLoc, yLoc;
     boolean inside = false;
+    boolean isDiscovered = false;
 
     public Room(int x, int y)
     {
         xLoc = x;
         yLoc = y;
+        if(x == 0 && y == 0) {
+            discover();
+        }
+    }
+
+    public void discover() {
+        this.isDiscovered = true;
     }
 
     public String toString() {
         if(inside){
             return "[X]";
+        }
+        if(isDiscovered) {
+            return "[ ]";
         }
         else {
             return "[?]";
@@ -48,6 +59,7 @@ public class Room {
     {
         occupant = null;
         inside = false;
+        isDiscovered = true;
     }
 
 

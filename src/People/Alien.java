@@ -7,8 +7,8 @@ package People;
 
 public class Alien extends Creature {
 
-    public Alien(int health, String name, int strength) {
-        super(health, name, strength);
+    public Alien(int health, String name) {
+        super(health, name);
     }
 
     @Override

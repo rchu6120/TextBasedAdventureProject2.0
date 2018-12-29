@@ -10,33 +10,31 @@ import Game.Runner;
 public abstract class Creature {
     private int health;
     private String name;
-    private int strength;
 
-    public Creature(int health, String name, int strength){
+    public Creature(int health, String name){
         this.health = health;
         this.name = name.toUpperCase();
-        this.strength = strength;
     }
 
     public int getHealth() {
-        return health;
+        return this.health;
+    }
+
+    public void setHealth(int newHealth) {
+        this.health = newHealth;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getStrength() {
-        return strength;
-    }
-
     public abstract String getImage();
 
     public void attack(Person person) {
         System.out.println("\nThe "+getName()+" attacks!");
-        int monsterdmg = (int)(Math.random()*(getStrength()/10));
-        System.out.println("It deals "+monsterdmg+" damage!\n");
-        person.health -=  monsterdmg;
+        int creaturedmg = (int)(Math.random()* 20) + 5;
+        System.out.println("The " + getName() + " dealt " +creaturedmg+" damage!\n");
+        person.health -=  creaturedmg;
         System.out.println(person.getName() +": health = "+person.getHealth());
         if(person.getHealth() <= 0){
             System.out.println("YOU DIED!!!");
@@ -45,7 +43,7 @@ public abstract class Creature {
     }
 
     public String toString() {
-        return getImage() + "\nNAME: " + getName()+  "\nSTRENGTH: "+getStrength();
+        return getImage() + "\nNAME: " + getName();
     }
 
 }

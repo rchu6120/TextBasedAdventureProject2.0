@@ -12,7 +12,7 @@ import Rooms.WinningRoom;
 public class Board {
     private Room[][] map;
     private int area;
-    public int mrcount = 0;
+    public int creaturecount = 0;
 
     public Board(Room[][] map) {
         this.map = map;
@@ -48,7 +48,7 @@ public class Board {
                 y2 = (int) (Math.random() * map.length);
             }
             map[x2][y2] = new CreatureRoom(x2, y2);
-            mrcount++;
+            creaturecount++;
         }
     }
     public void print() {
@@ -62,8 +62,8 @@ public class Board {
         System.out.println(str);
     }
 
-    public int getMrcount(){
-        return mrcount;
+    public int getCreaturecount(){
+        return creaturecount;
     }
 
 }

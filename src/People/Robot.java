@@ -6,14 +6,14 @@
 package People;
 
 public class Robot extends Creature{
-    public Robot(int health, String name, int strength) {
-        super(health, name, strength);
+    public Robot(int health, String name) {
+        super(health, name);
     }
 
 
     @Override
     public String getImage(){
-        return "                  /[-])//  ___\n" +
+        return "                        /[-])//  ___\n" +
         "                     __ --\\ `_/~--|  / \\\n" +
         "                   /_-/~~--~~ /~~~\\\\_\\ /\\\n" +
         "                   |  |___|===|_-- | \\ \\ \\\n" +

@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Runner {
 
     public static boolean gameOn = true;
-    public static int mrcount;
+    public static int creaturecount;
     public static void main(String[] args)
     {
 
@@ -28,68 +28,43 @@ public class Runner {
         String name = in.nextLine();
         Person player1 = new Person(name, 0, 0,100,0,1);
         System.out.println("Why hello, " + player1.getName()+". There are many space creatures lying around the board." + "\n" + "You must defeat all of them before entering the UFO to go back home!");
-        System.out.println("How big would you like your game to be? (Min: 2 x 2)");
-        System.out.println("Height:");
-        String height = in.nextLine();
-        System.out.println("Width:");
-        String width = in.nextLine();
-        try{
-            int heightint = Integer.parseInt(height);
-            int widthint = Integer.parseInt(width);
-            map = new Room[heightint][widthint];
-            board = new Board(map);
-
-
-            board.build();
-        }catch (NumberFormatException ex) {
-            System.out.println("I don't think those are numbers... How about a 5 x 5?");
-            board.build();
-        }
-        System.out.println("The rooms on the board marked with a \"C\" have a space creature inside the room!In each of the rooms marked with an 'C' you will find a creature!" + "\n" + "Use \"Kick\", \"Throw a bat\", \"Fireball\", or \"Hydro pump\" to beat each space creature!" + "\n" + "You must beat all the space creatures before going into the room marked with a \"W\" to win the game!");
+        board.build();
+        System.out.println("The rooms on the board marked with a \"C\" have a space creature inside the room!" + "\n" + "Use \"Kick\", \"Throw a bat\", \"Fireball\", or \"Hydro pump\" to beat each space creature!" + "\n" + "You must beat all the space creatures before going into the room marked with a \"W\" to win the game!");
         map[0][0].enterRoom(player1);
 
-        mrcount = board.mrcount;
+        creaturecount = board.creaturecount;
 
-        while(gameOn)
-        {
+        while(gameOn) {
             board.print();
             System.out.println(player1);
-            for (int i = 0; i < player1.getInventory().length; i++) {
-                if(player1.getInventory()[i] != null && player1.getInventory()[i].equals("Meat")){
-                    System.out.println("Where would you like to move? (Choose N, S, E, W) or eat your meat with C");
-                    break;
-                }
-                else if(i == player1.getInventory().length-1){
-                    System.out.println("Where would you like to move? (Choose N, S, E, W)");
-                }
-            }
-
-
-
+            System.out.println("Where would you like to move? (Choose N, S, E, W) or eat your meat with C and view your inventory with I.");
             String move = in.nextLine();
-            if(validMove(move, player1, map))
-            {
+            if (validMove(move, player1, map)) {
                 System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 
             }
-            if(move.equals("C") || move.equals("c")){
+            if (move.equals("C") || move.equals("c")) {
                 for (int i = 0; i < player1.getInventory().length; i++) {
-                    if(player1.getInventory()[i] != null && player1.getInventory()[i].equals("Meat")){
+                    if (player1.getInventory()[i] != null && player1.getInventory()[i].equals("Food")) {
                         player1.health += 20;
                         player1.getInventory()[i] = null;
-                        System.out.println("You ate your meat.");
+                        System.out.println("You ate some delicious food.");
                         break;
-                    }
-                    else if(i == player1.getInventory().length-1){
+                    } else if (i == player1.getInventory().length - 1) {
                         System.out.println("Please choose a valid move.");
                     }
+                }
+            }
+            if (move.equals("I") || move.equals("i")) {
+                System.out.println("============INVENTORY============");
+                System.out.println("-Bat");
+                for (int i = 0; i < player1.getInventory().length; i++) {
+                    System.out.println("-" + player1.getInventory()[i]);
                 }
             }
             else {
                 System.out.println("Please choose a valid move.");
             }
-
-
         }
         in.close();
     }

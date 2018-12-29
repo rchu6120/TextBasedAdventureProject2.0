@@ -12,7 +12,7 @@ public class Person {
     String Name;
     public int health;
     int xLoc, yLoc;
-    String[] inventory = new String[4];
+    public String[] inventory = new String[8];
     public int killcounter;
     public int dmg;
 
@@ -49,10 +49,9 @@ public class Person {
         return dmg;
     }
 
-    public String[] getInventory(){
+    public String[] getInventory() {
         return inventory;
     }
-
 
     public Person (String Name, int xLoc, int yLoc, int health, int killcounter, int dmg)
     {
@@ -67,29 +66,7 @@ public class Person {
     @Override
     public String toString() {
         String statement = "";
-        if(health >= 20) {
-            statement += Name + ':' + " health = " + health;
-        }
-        else{
-            statement += Name + ':' + " health = " + health + " (LOW)";
-        }
-        statement += "\nInventory: ";
-        for(int i = 0; i < inventory.length; i++){
-            if(getInventory()[i] == null){
-
-                statement += "[empty], ";
-
-
-
-            }
-            else {
-                statement += "[" + getInventory()[i].toUpperCase() + "], ";
-
-            }
-        }
-        statement = statement.substring(0, statement.length() - 2);
+        statement += Name + ':' + " Health = " + health;
         return statement;
     }
-
-
 }

@@ -6,8 +6,8 @@
 package People;
 
 public class Gorgon extends Creature {
-    public Gorgon(int health, String name, int strength) {
-        super(health, name, strength);
+    public Gorgon(int health, String name) {
+        super(health, name);
     }
 
     public String getImage() {

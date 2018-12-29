@@ -6,7 +6,6 @@
 package Rooms;
 
 import Game.Runner;
-import Items.Key;
 import People.Person;
 
 public class WinningRoom extends Room
@@ -35,19 +34,14 @@ public class WinningRoom extends Room
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
-
-        for (int i = 0; i < x.getInventory().length; i++) {
-            if(x.getInventory()[i] != null && x.getInventory()[i].equals("Key")) {
-                System.out.println("Congratulations you beat all the monsters and got into the UFO to go back home!");
-                Runner.gameOff();
-                break;
-            }
-            else if(i == x.getInventory().length-1){
-                System.out.println("You must kill all the creatures before entering this room! You must leave right now!");
-            }
+        if(x.getKillcounter() == 3) {
+            System.out.println("Congratulations you beat all the monsters and got into the UFO to go back home!");
+            Runner.gameOff();
+        }
+        else {
+            System.out.println("You must kill all the creatures before entering this room! You must leave right now!");
         }
     }
-
     @Override
     public void leaveRoom(Person x) {
         super.leaveRoom(x);
