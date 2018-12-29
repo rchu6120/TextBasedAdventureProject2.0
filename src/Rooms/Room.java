@@ -5,6 +5,7 @@
  */
 package Rooms;
 
+import Items.Weapon;
 import People.Person;
 
 public class Room {
@@ -17,15 +18,7 @@ public class Room {
     {
         xLoc = x;
         yLoc = y;
-        if(x == 0 && y == 0) {
-            discover();
-        }
     }
-
-    public void discover() {
-        this.isDiscovered = true;
-    }
-
     public String toString() {
         if(inside){
             return "[X]";
@@ -42,13 +35,20 @@ public class Room {
      * Method controls the results when a person enters this room.
      * @param x the Person entering
      */
-    public void enterRoom(Person x)
-    {
-        System.out.println("You enter a plain old room");
-        occupant = x;
-        x.setxLoc(this.xLoc);
-        x.setyLoc(this.yLoc);
-        inside = true;
+    public void enterRoom(Person x) {
+        if (isDiscovered) {
+            System.out.println("You already entered this room.");
+            occupant = x;
+            x.setxLoc(this.xLoc);
+            x.setyLoc(this.yLoc);
+            inside = true;
+        } else {
+            System.out.println("You enter a plain old room");
+            occupant = x;
+            x.setxLoc(this.xLoc);
+            x.setyLoc(this.yLoc);
+            inside = true;
+        }
     }
 
     /**
@@ -61,7 +61,5 @@ public class Room {
         inside = false;
         isDiscovered = true;
     }
-
-
 }
 

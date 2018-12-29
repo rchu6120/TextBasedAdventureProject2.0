@@ -37,29 +37,35 @@ public class Runner {
         while(gameOn) {
             board.print();
             System.out.println(player1);
-            System.out.println("Where would you like to move? (Choose N, S, E, W) or eat your meat with C and view your inventory with I.");
+            System.out.println("Where would you like to move? (Choose N, S, E, W) or eat your food with B and view your inventory with I.");
             String move = in.nextLine();
             if (validMove(move, player1, map)) {
                 System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 
             }
-            if (move.equals("C") || move.equals("c")) {
+            if (move.equals("I") || move.equals("i")) {
+                System.out.println("============INVENTORY============");
+                System.out.println("-Bat");
+                for (int i = 0; i < player1.getInventory().length; i++) {
+                    if (player1.getInventory()[i] == null) {
+                        System.out.println("-empty");
+                    }
+                    else {
+                        System.out.println("-" + player1.getInventory()[i]);
+                    }
+                }
+                System.out.println("=================================");
+            }
+            if (move.equals("B") || move.equals("b")) {
                 for (int i = 0; i < player1.getInventory().length; i++) {
                     if (player1.getInventory()[i] != null && player1.getInventory()[i].equals("Food")) {
-                        player1.health += 20;
+                        player1.health += 40;
                         player1.getInventory()[i] = null;
                         System.out.println("You ate some delicious food.");
                         break;
                     } else if (i == player1.getInventory().length - 1) {
                         System.out.println("Please choose a valid move.");
                     }
-                }
-            }
-            if (move.equals("I") || move.equals("i")) {
-                System.out.println("============INVENTORY============");
-                System.out.println("-Bat");
-                for (int i = 0; i < player1.getInventory().length; i++) {
-                    System.out.println("-" + player1.getInventory()[i]);
                 }
             }
             else {

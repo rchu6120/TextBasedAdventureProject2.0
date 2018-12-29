@@ -38,24 +38,21 @@ public class CreatureRoom extends Room {
         occupant = x;
         inside = true;
         if (dead) {
-            System.out.println("You enter a plain old room");
+            System.out.println("You killed the creature in this room already!");
             occupant = x;
             x.setxLoc(this.xLoc);
             x.setyLoc(this.yLoc);
             inside = true;
-        }
-        //A random creature generator
-        int creaturetype = (int) (Math.random() * 30) + 1;
-        if (creaturetype <= 30 && creaturetype > 20) {
-            Creature creature = new Gorgon((int) (Math.random() * 20) + 50, "Gorgon");
-        }
-        if (creaturetype <= 20 && creaturetype > 10) {
-            Creature creature = new Robot((int) (Math.random() * 20) + 50, "Robot");
-        }
-        else {
-            Creature creature = new Alien((int) (Math.random() * 20) + 50, "Alien)";
-        }
-
+        } else {
+            //A random creature generator
+            int creaturetype = (int) (Math.random() * 30) + 1;
+            Creature creature = new Alien((int) (Math.random() * 20) + 50, "Aliens");
+            if (creaturetype <= 30 && creaturetype > 20) {
+                creature = new Gorgon((int) (Math.random() * 20) + 50, "Gorgon");
+            }
+            if (creaturetype <= 20 && creaturetype > 10) {
+                creature = new Robot((int) (Math.random() * 20) + 50, "Robot");
+            }
             x.setxLoc(this.xLoc);
             x.setyLoc(this.yLoc);
             System.out.println("A space creature appeared! Prepare to battle this imbecile!");
@@ -80,9 +77,9 @@ public class CreatureRoom extends Room {
                 } else if (input.toLowerCase().equals("throw a bat")) {
                     damage = (int) (Math.random() * 10) + 1;
                 } else if (input.toLowerCase().equals("fireball")) {
-                    damage = (int) (Math.random() * 11) + 10;
+                    damage = (int) (Math.random() * 10) + 5;
                 } else if (input.toLowerCase().equals("hydro pump")) {
-                    damage = (int) (Math.random() * 11) + 10;
+                    damage = (int) (Math.random() * 10) + 5;
                 } else {
                     damage = 0;
                     System.out.println("Please enter a valid move.");
@@ -92,9 +89,6 @@ public class CreatureRoom extends Room {
                     creature.setHealth(creature.getHealth() - damage);
                     System.out.println(creature);
                     System.out.println(health + creature.getHealth());
-                    if (damage >= 10) {
-                        System.out.println("Super effective!");
-                    }
                     System.out.println("You did " + damage + " damage!");
                     creature.attack(x);
                     if (x.getHealth() < 0) {
@@ -108,25 +102,23 @@ public class CreatureRoom extends Room {
 
             } else {
                 System.out.println("\nYOU BEAT THE CREATURE!\n");
-
-                if (creaturetype >= 0) {
-                    Food food = new Food();
-                    food.addtoInventory(x);
-                    System.out.println("You got some delicious food!\n");
-                }
-
+                Food food = new Food();
+                food.addtoInventory(x);
+                System.out.println("You got some delicious food!\n");
                 System.out.println("=================================");
                 dead = true;
                 Runner.gameOn = true;
                 x.killcounter++;
             }
         }
+    }
 
         @Override
         public void leaveRoom(Person x){
             super.leaveRoom(x);
             occupant = null;
             inside = false;
+            dead = true;
         }
     }
 

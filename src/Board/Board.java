@@ -30,7 +30,7 @@ public class Board {
             }
         }
 
-        //Create a random Winning room + makes sure it is not the spawn location
+        //Create a random Winning Room + makes sure it is not the spawn location
         int x = (int) (Math.random() * map.length);
         int y = (int) (Math.random() * map.length);
         while (x == 0 && y == 0) {
@@ -39,8 +39,7 @@ public class Board {
         }
         map[x][y] = new WinningRoom(x, y);
         for(int i = 0; i < area; i+=10) {
-            //Create a random Creature room.
-
+            //Creates a random Creature room.
             int x2 = (int) (Math.random() * map.length);
             int y2 = (int) (Math.random() * map.length);
             while ((x2 == 0 && y2 == 0) || (x2 == x && y2 == y)) {

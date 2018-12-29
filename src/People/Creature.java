@@ -32,7 +32,7 @@ public abstract class Creature {
 
     public void attack(Person person) {
         System.out.println("\nThe "+getName()+" attacks!");
-        int creaturedmg = (int)(Math.random()* 20) + 5;
+        int creaturedmg = (int)(Math.random()* 10) + 5;
         System.out.println("The " + getName() + " dealt " +creaturedmg+" damage!\n");
         person.health -=  creaturedmg;
         System.out.println(person.getName() +": health = "+person.getHealth());

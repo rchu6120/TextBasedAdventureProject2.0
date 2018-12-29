@@ -2,7 +2,7 @@ package Items;
 
 import People.Person;
 
-public class Weapon {
+public class Weapon implements Item {
     public void addtoInventory(Person person) {
         for(int i = 0; i < person.getInventory().length; i++){
             if(person.getInventory()[i] == null){
