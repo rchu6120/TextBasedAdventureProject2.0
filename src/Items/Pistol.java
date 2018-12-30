@@ -3,10 +3,10 @@ package Items;
 import People.Person;
 
 public class Pistol implements Item {
-    public void addtoInventory(Person person) {
+    public void addToInventory(Person person) {
         for(int i = 0; i < person.getInventory().length; i++){
             if(person.getInventory()[i] == null){
-                person.getInventory()[i] = "Pistol";
+                person.setInventory(i, "Pistol");
                 break;
             }
         }

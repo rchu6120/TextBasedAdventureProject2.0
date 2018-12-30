@@ -12,8 +12,8 @@ public class Person {
     String Name;
     public int health;
     int xLoc, yLoc;
-    public String[] inventory = new String[8];
-    public int killcounter;
+    public String[] inventory = new String[6];
+    public int killcount;
     public int dmg;
 
 
@@ -41,8 +41,8 @@ public class Person {
         return Name;
     }
 
-    public int getKillcounter(){
-        return killcounter;
+    public int getKillCount(){
+        return killcount;
     }
 
     public int getDmg(){
@@ -53,13 +53,18 @@ public class Person {
         return inventory;
     }
 
-    public Person (String Name, int xLoc, int yLoc, int health, int killcounter, int dmg)
+    public void setInventory(int position, String itemName) {
+        inventory[position] = itemName;
+    }
+
+    //The characteristics associated with the person
+    public Person (String Name, int xLoc, int yLoc, int health, int killcount, int dmg)
     {
         this.Name = Name;
         this.xLoc = xLoc;
         this.yLoc = yLoc;
         this.health = health;
-        this.killcounter = killcounter;
+        this.killcount = killcount;
         this.dmg = dmg;
     }
 

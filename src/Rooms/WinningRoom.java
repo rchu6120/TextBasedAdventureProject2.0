@@ -34,7 +34,7 @@ public class WinningRoom extends Room
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
-        if(x.getKillcounter() == 3) {
+        if(x.getKillCount() == 3) {
             System.out.println("Congratulations you beat all the creatures and got into the UFO to go back home!");
             Runner.gameOff();
         }

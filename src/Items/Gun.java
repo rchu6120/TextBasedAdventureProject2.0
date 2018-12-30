@@ -9,15 +9,15 @@ import People.Person;
 
 public class Gun implements Item{
 
-    public void addtoInventory(Person person) {
+    public void addToInventory(Person person) {
         for(int i = 0; i < person.getInventory().length; i++){
             if(person.getInventory()[i] == null){
-                person.getInventory()[i] = "Gun";
+                person.setInventory(i, "Gun");
                 break;
             }
         }
     }
     public String toString() {
-        return "You found a gun! As if they had any effects on a space creature...";
+        return "You found a gun! As if they had any effect on space creatures...";
     }
 }

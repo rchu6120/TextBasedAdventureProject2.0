@@ -16,15 +16,14 @@ import java.util.Scanner;
 public class Runner {
 
     public static boolean gameOn = true;
-    public static int creaturecount;
     public static void main(String[] args)
     {
 
         Room[][] map = new Room[5][5];
         Board board = new Board(map);
-        //Setup player 1 and the input scanner
+        //Setup player 1 and the input scanner with introduction text
         Scanner in = new Scanner(System.in);
-        System.out.println("Welcome to Space Creatures!" + "\n" + "What might be your name?");
+        System.out.println("Welcome to Space Creatures! There are too many creatures that exist in this world! Get rid of these filthy creatures on the board!" + "\n" + "What might be your name?");
         String name = in.nextLine();
         Person player1 = new Person(name, 0, 0,100,0,1);
         System.out.println("Why hello, " + player1.getName()+". There are many space creatures lying around the board." + "\n" + "You must defeat all of them before entering the UFO to go back home!");
@@ -32,8 +31,7 @@ public class Runner {
         System.out.println("The rooms on the board marked with a \"C\" have a space creature inside the room!" + "\n" + "Use \"Kick\", \"Throw a bat\", \"Fireball\", or \"Hydro pump\" to beat each space creature!" + "\n" + "You must beat all the space creatures before going into the room marked with a \"W\" to win the game!");
         map[0][0].enterRoom(player1);
 
-        creaturecount = board.creaturecount;
-
+        //Starts the main game loop while gameOn is true
         while(gameOn) {
             board.print();
             System.out.println(player1);
@@ -41,8 +39,8 @@ public class Runner {
             String move = in.nextLine();
             if (validMove(move, player1, map)) {
                 System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-
             }
+            // Additional keys that can be pressed for the user to interact with
             if (move.equals("I") || move.equals("i")) {
                 System.out.println("============INVENTORY============");
                 System.out.println("-Bat");

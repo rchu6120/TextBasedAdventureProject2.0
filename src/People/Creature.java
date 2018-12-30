@@ -30,6 +30,7 @@ public abstract class Creature {
 
     public abstract String getImage();
 
+    //Allows the creature to attack the person with a random amount
     public void attack(Person person) {
         System.out.println("\nThe "+getName()+" attacks!");
         int creaturedmg = (int)(Math.random()* 10) + 5;
@@ -41,7 +42,7 @@ public abstract class Creature {
             Runner.gameOff();
         }
     }
-
+    //The image of the creature and the name of the creature when entering the creature room
     public String toString() {
         return getImage() + "\nNAME: " + getName();
     }

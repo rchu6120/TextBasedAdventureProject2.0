@@ -12,8 +12,6 @@ import People.*;
 
 import java.util.Scanner;
 
-import static Game.Runner.creaturecount;
-
 public class CreatureRoom extends Room {
     private boolean inside = false;
     private boolean dead = false;
@@ -98,17 +96,17 @@ public class CreatureRoom extends Room {
             }
             if (x.getHealth() < 0) {
                 System.out.println("GAME OVER");
-                System.out.println("You killed " + x.killcounter + " creatures.");
+                System.out.println("You killed " + x.killcount + " creatures.");
 
             } else {
                 System.out.println("\nYOU BEAT THE CREATURE!\n");
                 Food food = new Food();
-                food.addtoInventory(x);
+                food.addToInventory(x);
                 System.out.println("You got some delicious food!\n");
                 System.out.println("=================================");
                 dead = true;
                 Runner.gameOn = true;
-                x.killcounter++;
+                x.killcount++;
             }
         }
     }
