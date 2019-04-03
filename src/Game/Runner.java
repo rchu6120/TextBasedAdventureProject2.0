@@ -7,15 +7,14 @@ package Game;
 
 import Board.Board;
 import People.Person;
-import Rooms.CreatureRoom;
 import Rooms.Room;
-import Rooms.WinningRoom;
 
 import java.util.Scanner;
 
 public class Runner {
 
     public static boolean gameOn = true;
+    public static int creatureCount;
     public static void main(String[] args)
     {
 
@@ -27,9 +26,26 @@ public class Runner {
         String name = in.nextLine();
         Person player1 = new Person(name, 0, 0,100,0,1);
         System.out.println("Why hello, " + player1.getName()+". There are many space creatures lying around the board." + "\n" + "You must defeat all of them before entering the UFO to go back home!");
-        board.build();
+        System.out.println("How big would you like the board to be? (Min: 2 x 2)");
+        System.out.println("HEIGHT: ");
+        String height = in.nextLine();
+        System.out.println("WIDTH: ");
+        String width = in.nextLine();
+        try {
+            int heightInt = Integer.parseInt(height);
+            int widthInt = Integer.parseInt(width);
+            map = new Room[heightInt][widthInt];
+            board = new Board(map);
+            board.build();
+        }
+        catch (NumberFormatException ex) {
+            System.out.println("Those aren't numbers silly!");
+            System.out.println("How about a 5 by 5?");
+            board.build();
+    }
         System.out.println("The rooms on the board marked with a \"C\" have a space creature inside the room!" + "\n" + "Use \"Kick\", \"Throw a bat\", \"Fireball\", or \"Hydro pump\" to beat each space creature!" + "\n" + "You must beat all the space creatures before going into the room marked with a \"W\" to win the game!");
         map[0][0].enterRoom(player1);
+        creatureCount = board.creatureCount;
 
         //Starts the main game loop while gameOn is true
         while(gameOn) {

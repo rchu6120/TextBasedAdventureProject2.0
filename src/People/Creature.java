@@ -37,7 +37,7 @@ public abstract class Creature {
         System.out.println("The " + getName() + " dealt " +creaturedmg+" damage!\n");
         person.health -=  creaturedmg;
         System.out.println(person.getName() +": health = "+person.getHealth());
-        if(person.getHealth() <= 0){
+        if (person.getHealth() <= 0) {
             System.out.println("YOU DIED!!!");
             Runner.gameOff();
         }

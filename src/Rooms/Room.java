@@ -43,7 +43,7 @@ public class Room {
             x.setyLoc(this.yLoc);
             inside = true;
         } else {
-            System.out.println("You enter a plain old room");
+            System.out.println("You enter a plain old room.");
             occupant = x;
             x.setxLoc(this.xLoc);
             x.setyLoc(this.yLoc);
